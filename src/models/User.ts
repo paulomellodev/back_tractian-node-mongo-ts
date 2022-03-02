@@ -1,10 +1,12 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
-interface IUser {
+export interface IUser {
   name: string;
   email: string;
   password: string;
-  company: Schema.Types.ObjectId;
+  company: Types.ObjectId;
+  updatedAt: Date;
+  createdAt: Date;
 }
 const UserSchema = new Schema<IUser>(
   {
@@ -26,7 +28,7 @@ const UserSchema = new Schema<IUser>(
     },
     company: {
       type: Schema.Types.ObjectId,
-      ref: "companies",
+      ref: "Company",
       required: true,
     },
   },

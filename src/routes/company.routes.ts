@@ -6,13 +6,16 @@ import {
   retrieveCompany,
   updateCompany,
 } from "../controllers/companyController";
+import ensureAuth from "../middlewares/auth";
 
 const companyRouter = Router();
 
 companyRouter.post("/create", createCompany);
 companyRouter.get("/list", listCompanies);
+
+companyRouter.use(ensureAuth);
+companyRouter.put("/", updateCompany);
+companyRouter.delete("/", deleteCompany);
 companyRouter.get("/:company_id", retrieveCompany);
-companyRouter.put("/:company_id", updateCompany);
-companyRouter.delete("/:company_id", deleteCompany);
 
 export default companyRouter;

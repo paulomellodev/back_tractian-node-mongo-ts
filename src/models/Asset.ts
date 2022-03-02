@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 interface IAsset {
   asset_name: string;
@@ -7,8 +7,8 @@ interface IAsset {
   model: string;
   status?: "Running" | "Alerting" | "Stopped";
   health_level: number;
-  owner: Schema.Types.ObjectId;
-  unit: Schema.Types.ObjectId;
+  owner: Types.ObjectId;
+  unit: Types.ObjectId;
 }
 
 const AssetSchema = new Schema<IAsset>(
@@ -41,11 +41,11 @@ const AssetSchema = new Schema<IAsset>(
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref: "users",
+      ref: "User",
     },
     unit: {
       type: Schema.Types.ObjectId,
-      ref: "units",
+      ref: "Unit",
     },
   },
   { minimize: false, timestamps: true }

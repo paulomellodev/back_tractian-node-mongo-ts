@@ -1,11 +1,11 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 interface ICompany {
   corporate_name: string;
   cnpj: string;
   description: string;
-  users: Array<Schema.Types.ObjectId>;
-  units: Array<Schema.Types.ObjectId>;
+  users: Array<Types.ObjectId>;
+  units: Array<Types.ObjectId>;
 }
 
 const CompanySchema = new Schema<ICompany>(
@@ -27,19 +27,19 @@ const CompanySchema = new Schema<ICompany>(
     users: [
       {
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
       },
     ],
     units: [
       {
         type: Schema.Types.ObjectId,
-        ref: "units",
+        ref: "Unit",
       },
     ],
   },
   { minimize: false, timestamps: true }
 );
 
-const Company = model<ICompany>("Company", CompanySchema);
+const Company = model("Company", CompanySchema);
 
 export default Company;

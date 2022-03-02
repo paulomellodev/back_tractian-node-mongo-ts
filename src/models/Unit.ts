@@ -1,10 +1,10 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 interface IUnit {
   unit_name: string;
   address?: string;
-  company: Schema.Types.ObjectId;
-  assets: Array<Schema.Types.ObjectId>;
+  company: Types.ObjectId;
+  assets: Array<Types.ObjectId>;
 }
 
 const UnitSchema = new Schema<IUnit>(
@@ -20,12 +20,12 @@ const UnitSchema = new Schema<IUnit>(
     },
     company: {
       type: Schema.Types.ObjectId,
-      ref: "companies",
+      ref: "Company",
     },
     assets: [
       {
         type: Schema.Types.ObjectId,
-        ref: "assets",
+        ref: "Asset",
       },
     ],
   },
