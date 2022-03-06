@@ -45,7 +45,7 @@ export const retrieveUnit = async (req: Request, res: Response) => {
 };
 
 export const listUnits = async (req: Request, res: Response) => {
-  const units = await Unit.find();
+  const units = await Unit.find().populate("assets");
   return res.status(200).json({ units });
 };
 
