@@ -6,7 +6,7 @@
   "author": "Paulo Mello",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node dist/src/app.js",
     "build": "tsc",
     "dev": "ts-node-dev --inspect --ignore-watch node_modules src/app.ts"
   },
